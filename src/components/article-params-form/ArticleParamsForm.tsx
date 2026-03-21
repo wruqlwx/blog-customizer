@@ -23,7 +23,7 @@ export const ArticleParamsForm = () => {
 	const sidebarRef = useRef<HTMLElement>(null);
 
 	const toggleSidebar = () => {
-		setIsOpen(!isOpen);
+		setIsOpen(prev => !prev);
 	};
 
 	const handleClickOutside = (event: MouseEvent) => {
