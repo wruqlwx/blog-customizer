@@ -3,7 +3,6 @@ import arrow from 'src/images/arrow.svg';
 import styles from './ArrowButton.module.scss';
 import clsx from 'clsx';
 
-/** Функция для обработки открытия/закрытия формы */
 export type OnClick = () => void;
 
 type ArrowButtonProps = {
@@ -19,8 +18,7 @@ export const ArrowButton = ({ isOpen, onClick }: ArrowButtonProps) => {
 			tabIndex={0}
 			className={clsx(styles.container, { [styles.container_open]: isOpen })}
 			onClick={onClick}
-			data-testid='arrow-button'
-			data-class='ArrowButton-module__container'>
+			data-testid='arrow-button'>
 			<img
 				src={arrow}
 				alt='иконка стрелочки'
