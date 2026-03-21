@@ -19,7 +19,8 @@ export const ArrowButton = ({ isOpen, onClick }: ArrowButtonProps) => {
 			tabIndex={0}
 			className={clsx(styles.container, { [styles.container_open]: isOpen })}
 			onClick={onClick}
-			data-testid='arrow-button'>
+			data-testid='arrow-button'
+			data-class='ArrowButton-module__container'>
 			<img
 				src={arrow}
 				alt='иконка стрелочки'

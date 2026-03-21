@@ -100,9 +100,8 @@ export const ArticleParamsForm = () => {
 			<ArrowButton isOpen={isOpen} onClick={toggleSidebar} />
 			<aside
 				ref={sidebarRef}
-				className={`${styles.container} ${
-					isOpen ? styles.container_open : ''
-				}`}>
+				className={`${styles.container} ${isOpen ? styles.container_open : ''}`}
+				data-testid='sidebar'>
 				<form
 					className={styles.form}
 					onSubmit={handleSubmit}
