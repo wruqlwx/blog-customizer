@@ -5,6 +5,7 @@ import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
 import { Separator } from 'src/ui/separator';
 import { Text } from 'src/ui/text';
+import clsx from 'clsx';
 import {
 	defaultArticleState,
 	fontFamilyOptions,
@@ -18,7 +19,7 @@ import {
 import styles from './ArticleParamsForm.module.scss';
 
 export const ArticleParamsForm = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(true);
 	const [pendingState, setPendingState] =
 		useState<ArticleStateType>(defaultArticleState);
 	const sidebarRef = useRef<HTMLElement>(null);
@@ -100,7 +101,11 @@ export const ArticleParamsForm = () => {
 			<ArrowButton isOpen={isOpen} onClick={toggleSidebar} />
 			<aside
 				ref={sidebarRef}
-				className={`${styles.container} ${isOpen ? styles.container_open : ''}`}
+				className={clsx(
+					styles.container,
+					{ [styles.container_open]: isOpen },
+					'sidebar'
+				)}
 				data-testid='sidebar'>
 				<form
 					className={styles.form}
