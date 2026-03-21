@@ -1,15 +1,17 @@
 .container {
 	position: fixed;
 	left: 0;
+	top: 0;
 	width: 616px;
 	height: 100%;
 	overflow: scroll;
-	transform: translate(-616px);
+	transform: translateX(-616px);
 	transition: transform 0.5s ease;
+	z-index: 1000;
 }
 
 .container_open {
-	transform: translate(0);
+	transform: translateX(0);
 }
 
 .form {
