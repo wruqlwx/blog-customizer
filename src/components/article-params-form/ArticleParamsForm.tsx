@@ -19,15 +19,19 @@ import styles from './ArticleParamsForm.module.scss';
 
 export const ArticleParamsForm = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [pendingState, setPendingState] = useState<ArticleStateType>(defaultArticleState);
+	const [pendingState, setPendingState] =
+		useState<ArticleStateType>(defaultArticleState);
 	const sidebarRef = useRef<HTMLElement>(null);
 
 	const toggleSidebar = () => {
-		setIsOpen(prev => !prev);
+		setIsOpen((prev) => !prev);
 	};
 
 	const handleClickOutside = (event: MouseEvent) => {
-		if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+		if (
+			sidebarRef.current &&
+			!sidebarRef.current.contains(event.target as Node)
+		) {
 			setIsOpen(false);
 		}
 	};
@@ -69,23 +73,25 @@ export const ArticleParamsForm = () => {
 		setIsOpen(false);
 	};
 
-	const handleFontFamilyChange = (option: typeof fontFamilyOptions[0]) => {
+	const handleFontFamilyChange = (option: (typeof fontFamilyOptions)[0]) => {
 		setPendingState({ ...pendingState, fontFamilyOption: option });
 	};
 
-	const handleFontColorChange = (option: typeof fontColors[0]) => {
+	const handleFontColorChange = (option: (typeof fontColors)[0]) => {
 		setPendingState({ ...pendingState, fontColor: option });
 	};
 
-	const handleBackgroundColorChange = (option: typeof backgroundColors[0]) => {
+	const handleBackgroundColorChange = (
+		option: (typeof backgroundColors)[0]
+	) => {
 		setPendingState({ ...pendingState, backgroundColor: option });
 	};
 
-	const handleContentWidthChange = (option: typeof contentWidthArr[0]) => {
+	const handleContentWidthChange = (option: (typeof contentWidthArr)[0]) => {
 		setPendingState({ ...pendingState, contentWidth: option });
 	};
 
-	const handleFontSizeChange = (option: typeof fontSizeOptions[0]) => {
+	const handleFontSizeChange = (option: (typeof fontSizeOptions)[0]) => {
 		setPendingState({ ...pendingState, fontSizeOption: option });
 	};
 
@@ -94,48 +100,56 @@ export const ArticleParamsForm = () => {
 			<ArrowButton isOpen={isOpen} onClick={toggleSidebar} />
 			<aside
 				ref={sidebarRef}
-				className={`${styles.container} ${isOpen ? styles.open : ''}`}>
+				style={{
+					transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+				}}
+				className={styles.container}>
 				<form className={styles.form} onSubmit={handleSubmit}>
-					<Text as="h2" size={31} weight={800} uppercase>
+					<Text as='h2' size={31} weight={800} uppercase>
 						Настройки
 					</Text>
 					<Separator />
 					<Select
-						title="Шрифт"
+						title='Шрифт'
 						options={fontFamilyOptions}
 						selected={pendingState.fontFamilyOption}
 						onChange={handleFontFamilyChange}
 					/>
 					<RadioGroup
-						name="fontColor"
-						title="Цвет текста"
+						name='fontColor'
+						title='Цвет текста'
 						options={fontColors}
 						selected={pendingState.fontColor}
 						onChange={handleFontColorChange}
 					/>
 					<RadioGroup
-						name="backgroundColor"
-						title="Цвет фона"
+						name='backgroundColor'
+						title='Цвет фона'
 						options={backgroundColors}
 						selected={pendingState.backgroundColor}
 						onChange={handleBackgroundColorChange}
 					/>
 					<Select
-						title="Ширина контента"
+						title='Ширина контента'
 						options={contentWidthArr}
 						selected={pendingState.contentWidth}
 						onChange={handleContentWidthChange}
 					/>
 					<RadioGroup
-						name="fontSize"
-						title="Размер шрифта"
+						name='fontSize'
+						title='Размер шрифта'
 						options={fontSizeOptions}
 						selected={pendingState.fontSizeOption}
 						onChange={handleFontSizeChange}
 					/>
 					<div className={styles.bottomContainer}>
-						<Button title="Сбросить" htmlType="button" type="clear" onClick={handleReset} />
-						<Button title="Применить" htmlType="submit" type="apply" />
+						<Button
+							title='Сбросить'
+							htmlType='button'
+							type='clear'
+							onClick={handleReset}
+						/>
+						<Button title='Применить' htmlType='submit' type='apply' />
 					</div>
 				</form>
 			</aside>
