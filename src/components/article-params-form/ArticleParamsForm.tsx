@@ -100,10 +100,9 @@ export const ArticleParamsForm = () => {
 			<ArrowButton isOpen={isOpen} onClick={toggleSidebar} />
 			<aside
 				ref={sidebarRef}
-				style={{
-					transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
-				}}
-				className={styles.container}>
+				className={`${styles.container} ${
+					isOpen ? styles.container_open : ''
+				}`}>
 				<form className={styles.form} onSubmit={handleSubmit}>
 					<Text as='h2' size={31} weight={800} uppercase>
 						Настройки

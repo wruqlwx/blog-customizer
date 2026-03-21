@@ -8,7 +8,12 @@
 	overflow-y: auto;
 	background-color: #ffffff;
 	border-right: 1px solid #000000;
+	transform: translateX(-100%);
 	transition: transform 0.5s ease;
+}
+
+.container_open {
+	transform: translateX(0);
 }
 
 .form {
