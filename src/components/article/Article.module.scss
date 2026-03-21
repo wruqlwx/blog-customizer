@@ -7,16 +7,16 @@
 	max-width: var(--content-width, 1394px);
 	margin: 0 auto;
 	padding: 72px 0 144px;
-	background-color: var(--background-color, #ffffff);
 	color: var(--font-color, #000000);
-	font-family: var(--font-family, 'Open Sans'), sans-serif;
 	font-size: var(--font-size, 18px);
+	font-family: var(--font-family, 'Open Sans'), sans-serif;
+	background-color: var(--background-color, #ffffff);
 }
 
 .article * {
 	color: var(--font-color, #000000);
-	font-family: var(--font-family, 'Open Sans'), sans-serif;
 	font-size: var(--font-size, 18px);
+	font-family: var(--font-family, 'Open Sans'), sans-serif;
 }
 
 .titleDescription {
