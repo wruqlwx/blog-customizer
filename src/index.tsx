@@ -16,6 +16,7 @@ const App = () => {
 	return (
 		<main
 			className={clsx(styles.main)}
+			data-testid='main'
 			style={
 				{
 					'--font-family': defaultArticleState.fontFamilyOption.value,

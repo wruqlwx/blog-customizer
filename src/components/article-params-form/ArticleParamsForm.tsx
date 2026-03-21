@@ -103,7 +103,10 @@ export const ArticleParamsForm = () => {
 				className={`${styles.container} ${
 					isOpen ? styles.container_open : ''
 				}`}>
-				<form className={styles.form} onSubmit={handleSubmit}>
+				<form
+					className={styles.form}
+					onSubmit={handleSubmit}
+					data-testid='article-params-form'>
 					<Text as='h2' size={31} weight={800} uppercase>
 						Настройки
 					</Text>
