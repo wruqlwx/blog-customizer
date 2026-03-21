@@ -52,8 +52,8 @@ export const ArticleParamsForm = () => {
 		root.style.setProperty('--font-family', state.fontFamilyOption.value);
 		root.style.setProperty('--font-size', state.fontSizeOption.value);
 		root.style.setProperty('--font-color', state.fontColor.value);
-		root.style.setProperty('--content-width', state.contentWidth.value);
-		root.style.setProperty('--background-color', state.backgroundColor.value);
+		root.style.setProperty('--container-width', state.contentWidth.value);
+		root.style.setProperty('--bg-color', state.backgroundColor.value);
 	};
 
 	useEffect(() => {

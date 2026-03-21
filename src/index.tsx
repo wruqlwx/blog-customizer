@@ -21,8 +21,8 @@ const App = () => {
 					'--font-family': defaultArticleState.fontFamilyOption.value,
 					'--font-size': defaultArticleState.fontSizeOption.value,
 					'--font-color': defaultArticleState.fontColor.value,
-					'--content-width': defaultArticleState.contentWidth.value,
-					'--background-color': defaultArticleState.backgroundColor.value,
+					'--container-width': defaultArticleState.contentWidth.value,
+					'--bg-color': defaultArticleState.backgroundColor.value,
 				} as CSSProperties
 			}>
 			<ArticleParamsForm />
