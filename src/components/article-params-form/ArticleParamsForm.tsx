@@ -62,8 +62,7 @@ export const ArticleParamsForm = ({
 		setIsOpen(false);
 	};
 
-	const handleReset = (event: FormEvent) => {
-		event.preventDefault();
+	const handleReset = () => {
 		setPendingState(defaultArticleState);
 		setArticleState(defaultArticleState);
 		setIsOpen(false);
