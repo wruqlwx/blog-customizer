@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
     
@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: 20
 
-    - name: Install dependencies
+    - name: Install Project Dependencies
       run: npm install
 
     - name: Get testing lib
