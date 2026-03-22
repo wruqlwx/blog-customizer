@@ -5,12 +5,13 @@
 	z-index: 1000;
 	width: 616px;
 	height: 100%;
-	overflow: scroll;
-	transform: translateX(-616px);
-	transition: transform 0.5s ease;
+	visibility: hidden;
+	transform: translateX(-100%);
+	transition: transform 0.5s ease, visibility 0.5s;
 }
 
 .container_open {
+	visibility: visible;
 	transform: translateX(0);
 }
 

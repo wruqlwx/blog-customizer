@@ -17,10 +17,20 @@ import {
 
 import styles from './ArticleParamsForm.module.scss';
 
-export const ArticleParamsForm = () => {
+// Добавляем типизацию для пропсов
+type ArticleParamsFormProps = {
+	setArticleState: (state: ArticleStateType) => void;
+};
+
+export const ArticleParamsForm = ({
+	setArticleState,
+}: ArticleParamsFormProps) => {
 	const [isOpen, setIsOpen] = useState(false);
+
+	// pendingState — это то, что мы нащелкали в форме, но еще не применили
 	const [pendingState, setPendingState] =
 		useState<ArticleStateType>(defaultArticleState);
+
 	const sidebarRef = useRef<HTMLElement>(null);
 
 	const toggleSidebar = () => {
@@ -47,32 +57,21 @@ export const ArticleParamsForm = () => {
 		};
 	}, [isOpen]);
 
-	const applyStyles = (state: ArticleStateType) => {
-		const root = document.documentElement;
-		root.style.setProperty('--font-family', state.fontFamilyOption.value);
-		root.style.setProperty('--font-size', state.fontSizeOption.value);
-		root.style.setProperty('--font-color', state.fontColor.value);
-		root.style.setProperty('--content-width', state.contentWidth.value);
-		root.style.setProperty('--background-color', state.backgroundColor.value);
-	};
-
-	useEffect(() => {
-		applyStyles(defaultArticleState);
-	}, []);
-
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		applyStyles(pendingState);
+		// Применяем выбранные настройки к статье
+		setArticleState(pendingState);
 		setIsOpen(false);
 	};
 
 	const handleReset = () => {
-		const resetState = { ...defaultArticleState };
-		setPendingState(resetState);
-		applyStyles(resetState);
+		// Сбрасываем и локальное состояние формы, и глобальное состояние статьи
+		setPendingState(defaultArticleState);
+		setArticleState(defaultArticleState);
 		setIsOpen(false);
 	};
 
+	// Обработчики изменения полей теперь меняют только временное состояние (pendingState)
 	const handleFontFamilyChange = (option: (typeof fontFamilyOptions)[0]) => {
 		setPendingState({ ...pendingState, fontFamilyOption: option });
 	};
