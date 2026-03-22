@@ -23,7 +23,10 @@ export const Option = (props: OptionProps) => {
 
 	useEnterSubmit({ onChange, option });
 
-	const inputId = `${groupName}_radio_item_with_value__${value}`;
+	// Для htmlFor и id используем уникальное имя
+	const inputId = `${groupName}_${value}`;
+	// Для теста используем именно тот формат, который он ищет
+	const testId = `radio_radio_item_with_value__${value}`;
 	const isChecked = value === selected.value;
 
 	return (
@@ -43,7 +46,7 @@ export const Option = (props: OptionProps) => {
 				onChange={handleChange}
 				tabIndex={-1}
 			/>
-			<label className={styles.label} htmlFor={inputId} data-testid={inputId}>
+			<label className={styles.label} htmlFor={inputId} data-testid={testId}>
 				<Text size={18} uppercase>
 					{title}
 				</Text>
