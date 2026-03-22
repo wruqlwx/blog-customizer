@@ -9,7 +9,7 @@ type RadioGroupProps = {
 	options: OptionType[];
 	selected: OptionType;
 	onChange?: (option: OptionType) => void;
-	title: string;
+	title?: string;
 };
 
 export const RadioGroup = ({
@@ -22,7 +22,7 @@ export const RadioGroup = ({
 	return (
 		<div className={styles.container}>
 			{title && (
-				<Text weight={800} size={12} uppercase>
+				<Text weight={800} size={18} uppercase>
 					{title}
 				</Text>
 			)}
@@ -34,8 +34,8 @@ export const RadioGroup = ({
 						value={option.value}
 						title={option.title}
 						selected={selected}
-						onChange={onChange}
 						option={option}
+						onChange={onChange}
 					/>
 				))}
 			</div>

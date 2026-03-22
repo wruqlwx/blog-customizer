@@ -32,9 +32,7 @@ export const ArticleParamsForm = ({
 
 	const sidebarRef = useRef<HTMLElement>(null);
 
-	const toggleSidebar = () => {
-		setIsOpen(!isOpen);
-	};
+	const toggleSidebar = () => setIsOpen(!isOpen);
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (
@@ -51,9 +49,7 @@ export const ArticleParamsForm = ({
 		} else {
 			document.removeEventListener('mousedown', handleClickOutside);
 		}
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
+		return () => document.removeEventListener('mousedown', handleClickOutside);
 	}, [isOpen]);
 
 	const handleSubmit = (event: FormEvent) => {
