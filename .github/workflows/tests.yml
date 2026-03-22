@@ -25,7 +25,12 @@ jobs:
     - name: Install Browsers and Run Tests
       run: |
         export PLAYWRIGHT_BROWSERS_PATH=${{ github.workspace }}/pw-browsers
+        
+        cd /tmp/tests-blog-customizer
+        npm install
         npx playwright install --with-deps chromium
+        
+        cd ${{ github.workspace }}
         bash /tmp/tests-blog-customizer/run.sh
       
     - uses: actions/upload-artifact@v4
