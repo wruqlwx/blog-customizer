@@ -61,8 +61,7 @@
 	},
 	"scripts": {
 		"postinstall": "npx playwright install chromium || echo 'Skipping browser install for NixOS'",
-		"build": "npx playwright install chromium || echo 'Skip install' && cross-env NODE_ENV=production webpack --config webpack/webpack.config.js --env env=prod",
-		"start": "webpack serve --config webpack/webpack.config.js --env env=dev",
+		"build": "npx playwright install chromium && cross-env NODE_ENV=production webpack --config webpack/webpack.config.js --env env=prod",
 		"stylelint": "stylelint \"src/**/*.scss\"",
 		"stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
 		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
