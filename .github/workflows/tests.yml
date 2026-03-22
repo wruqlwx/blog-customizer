@@ -9,26 +9,23 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    env:
-      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/pw-browsers
     steps:
     - uses: actions/checkout@v3
+    
     - uses: actions/setup-node@v3
       with:
         node-version: 20
-    
+
     - name: Install dependencies
       run: npm install
 
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps chromium
-
     - name: Get testing lib
       run: set -eu && git clone https://github.com/Yandex-Practicum/tests-blog-customizer.git /tmp/tests-blog-customizer
-    
-    - name: Run tests
+
+    - name: Install Browsers and Run Tests
       run: |
         export PLAYWRIGHT_BROWSERS_PATH=${{ github.workspace }}/pw-browsers
+        npx playwright install --with-deps chromium
         bash /tmp/tests-blog-customizer/run.sh
       
     - uses: actions/upload-artifact@v4
