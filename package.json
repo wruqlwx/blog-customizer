@@ -59,12 +59,13 @@
 		"webpack-dev-server": "^4.15.0"
 	},
 	"scripts": {
+		"postinstall": "npx playwright install chromium || echo 'Skipping browser install for NixOS'",
 		"build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.js --env env=prod",
 		"start": "webpack serve --config webpack/webpack.config.js --env env=dev",
 		"stylelint": "stylelint \"src/**/*.scss\"",
 		"stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
 		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
-		"format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" --ignore-path ./.prettierignore",
+		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" --ignore-path ./.prettierignore",
 		"test": "npm run stylelint:fix && npm run lint && npm run format",
 		"prepare": "husky install",
 		"commit": "npm run test && cz",
