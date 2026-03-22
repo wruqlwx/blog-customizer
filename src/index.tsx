@@ -11,9 +11,6 @@ import {
 import './styles/index.scss';
 import styles from './styles/index.module.scss';
 
-const domNode = document.getElementById('root') as HTMLDivElement;
-const root = createRoot(domNode);
-
 const App = () => {
 	const [articleState, setArticleState] =
 		useState<ArticleStateType>(defaultArticleState);
@@ -35,6 +32,9 @@ const App = () => {
 		</main>
 	);
 };
+
+const domNode = document.getElementById('root') as HTMLDivElement;
+const root = createRoot(domNode);
 
 root.render(
 	<StrictMode>

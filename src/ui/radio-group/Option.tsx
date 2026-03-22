@@ -16,23 +16,19 @@ type OptionProps = {
 
 export const Option = (props: OptionProps) => {
 	const { value, title, selected, groupName, onChange, option } = props;
-
 	const optionRef = useRef<HTMLDivElement>(null);
 
 	const handleChange = () => onChange?.(option);
-
 	useEnterSubmit({ onChange, option });
 
-	// Для htmlFor и id используем уникальное имя
-	const inputId = `${groupName}_${value}`;
-	// Для теста используем именно тот формат, который он ищет
-	const testId = `radio_radio_item_with_value__${value}`;
 	const isChecked = value === selected.value;
+	const inputId = `${groupName}_${value}`;
+	const testValue = typeof value === 'object' ? (value as any).value : value;
+	const testId = `radio_radio_item_with_value__${testValue}`;
 
 	return (
 		<div
 			className={styles.item}
-			key={value}
 			data-checked={isChecked}
 			tabIndex={0}
 			ref={optionRef}>
@@ -41,7 +37,7 @@ export const Option = (props: OptionProps) => {
 				type='radio'
 				name={groupName}
 				id={inputId}
-				value={value}
+				value={testValue}
 				checked={isChecked}
 				onChange={handleChange}
 				tabIndex={-1}
