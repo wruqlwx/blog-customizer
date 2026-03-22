@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect, FormEvent } from 'react';
+import clsx from 'clsx';
 import { ArrowButton } from 'src/ui/arrow-button';
 import { Button } from 'src/ui/button';
 import { Select } from 'src/ui/select';
 import { RadioGroup } from 'src/ui/radio-group';
 import { Separator } from 'src/ui/separator';
 import { Text } from 'src/ui/text';
+
 import {
 	defaultArticleState,
 	fontFamilyOptions,
@@ -25,7 +27,6 @@ export const ArticleParamsForm = ({
 	setArticleState,
 }: ArticleParamsFormProps) => {
 	const [isOpen, setIsOpen] = useState(false);
-
 	const [pendingState, setPendingState] =
 		useState<ArticleStateType>(defaultArticleState);
 
@@ -61,7 +62,8 @@ export const ArticleParamsForm = ({
 		setIsOpen(false);
 	};
 
-	const handleReset = () => {
+	const handleReset = (event: FormEvent) => {
+		event.preventDefault();
 		setPendingState(defaultArticleState);
 		setArticleState(defaultArticleState);
 		setIsOpen(false);
@@ -72,12 +74,13 @@ export const ArticleParamsForm = ({
 			<ArrowButton isOpen={isOpen} onClick={toggleSidebar} />
 			<aside
 				ref={sidebarRef}
-				className={`${styles.container} ${
-					isOpen ? styles.container_open : ''
-				}`}>
-				<form className={styles.form} onSubmit={handleSubmit}>
+				className={clsx(styles.container, isOpen && styles.container_open)}>
+				<form
+					className={styles.form}
+					onSubmit={handleSubmit}
+					onReset={handleReset}>
 					<Text as='h2' size={31} weight={800} uppercase>
-						Настройки
+						Задайте параметры
 					</Text>
 					<Select
 						title='Шрифт'
@@ -122,13 +125,8 @@ export const ArticleParamsForm = ({
 						}
 					/>
 					<div className={styles.bottomContainer}>
-						<Button
-							title='Сбросить'
-							htmlType='button'
-							type='clear'
-							onClick={handleReset}
-						/>
-						<Button title='Применить' htmlType='submit' type='apply' />
+						<Button title='Сбросить' type='clear' />
+						<Button title='Применить' type='apply' />
 					</div>
 				</form>
 			</aside>
