@@ -9,11 +9,13 @@
 	visibility: hidden;
 	transform: translateX(100%);
 	transition: transform 0.5s ease, visibility 0.5s;
+	pointer-events: none;
 }
 
 .container_open {
 	visibility: visible;
 	transform: translateX(0);
+	pointer-events: all;
 }
 
 .form {
@@ -27,6 +29,7 @@
 	padding: 50px 31px;
 	background-color: #ffffff;
 	border-right: 1px solid #000000;
+	pointer-events: all;
 }
 
 .bottomContainer {

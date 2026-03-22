@@ -17,7 +17,6 @@ import {
 
 import styles from './ArticleParamsForm.module.scss';
 
-// Добавляем типизацию для пропсов
 type ArticleParamsFormProps = {
 	setArticleState: (state: ArticleStateType) => void;
 };
@@ -27,7 +26,6 @@ export const ArticleParamsForm = ({
 }: ArticleParamsFormProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	// pendingState — это то, что мы нащелкали в форме, но еще не применили
 	const [pendingState, setPendingState] =
 		useState<ArticleStateType>(defaultArticleState);
 
@@ -59,39 +57,14 @@ export const ArticleParamsForm = ({
 
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
-		// Применяем выбранные настройки к статье
 		setArticleState(pendingState);
 		setIsOpen(false);
 	};
 
 	const handleReset = () => {
-		// Сбрасываем и локальное состояние формы, и глобальное состояние статьи
 		setPendingState(defaultArticleState);
 		setArticleState(defaultArticleState);
 		setIsOpen(false);
-	};
-
-	// Обработчики изменения полей теперь меняют только временное состояние (pendingState)
-	const handleFontFamilyChange = (option: (typeof fontFamilyOptions)[0]) => {
-		setPendingState({ ...pendingState, fontFamilyOption: option });
-	};
-
-	const handleFontColorChange = (option: (typeof fontColors)[0]) => {
-		setPendingState({ ...pendingState, fontColor: option });
-	};
-
-	const handleBackgroundColorChange = (
-		option: (typeof backgroundColors)[0]
-	) => {
-		setPendingState({ ...pendingState, backgroundColor: option });
-	};
-
-	const handleContentWidthChange = (option: (typeof contentWidthArr)[0]) => {
-		setPendingState({ ...pendingState, contentWidth: option });
-	};
-
-	const handleFontSizeChange = (option: (typeof fontSizeOptions)[0]) => {
-		setPendingState({ ...pendingState, fontSizeOption: option });
 	};
 
 	return (
@@ -106,39 +79,47 @@ export const ArticleParamsForm = ({
 					<Text as='h2' size={31} weight={800} uppercase>
 						Настройки
 					</Text>
-					<Separator />
 					<Select
 						title='Шрифт'
 						options={fontFamilyOptions}
 						selected={pendingState.fontFamilyOption}
-						onChange={handleFontFamilyChange}
-					/>
-					<RadioGroup
-						name='fontColor'
-						title='Цвет текста'
-						options={fontColors}
-						selected={pendingState.fontColor}
-						onChange={handleFontColorChange}
-					/>
-					<RadioGroup
-						name='backgroundColor'
-						title='Цвет фона'
-						options={backgroundColors}
-						selected={pendingState.backgroundColor}
-						onChange={handleBackgroundColorChange}
-					/>
-					<Select
-						title='Ширина контента'
-						options={contentWidthArr}
-						selected={pendingState.contentWidth}
-						onChange={handleContentWidthChange}
+						onChange={(option) =>
+							setPendingState({ ...pendingState, fontFamilyOption: option })
+						}
 					/>
 					<RadioGroup
 						name='fontSize'
 						title='Размер шрифта'
 						options={fontSizeOptions}
 						selected={pendingState.fontSizeOption}
-						onChange={handleFontSizeChange}
+						onChange={(option) =>
+							setPendingState({ ...pendingState, fontSizeOption: option })
+						}
+					/>
+					<Select
+						title='Цвет текста'
+						options={fontColors}
+						selected={pendingState.fontColor}
+						onChange={(option) =>
+							setPendingState({ ...pendingState, fontColor: option })
+						}
+					/>
+					<Separator />
+					<Select
+						title='Цвет фона'
+						options={backgroundColors}
+						selected={pendingState.backgroundColor}
+						onChange={(option) =>
+							setPendingState({ ...pendingState, backgroundColor: option })
+						}
+					/>
+					<Select
+						title='Ширина контента'
+						options={contentWidthArr}
+						selected={pendingState.contentWidth}
+						onChange={(option) =>
+							setPendingState({ ...pendingState, contentWidth: option })
+						}
 					/>
 					<div className={styles.bottomContainer}>
 						<Button

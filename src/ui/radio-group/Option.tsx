@@ -23,8 +23,8 @@ export const Option = (props: OptionProps) => {
 
 	const isChecked = value === selected.value;
 	const inputId = `${groupName}_${value}`;
-	const testValue = typeof value === 'object' ? (value as any).value : value;
-	const testId = `radio_radio_item_with_value__${testValue}`;
+
+	const testId = `radio_radio_item_with_value__${value}`;
 
 	return (
 		<div
@@ -37,7 +37,7 @@ export const Option = (props: OptionProps) => {
 				type='radio'
 				name={groupName}
 				id={inputId}
-				value={testValue}
+				value={value}
 				checked={isChecked}
 				onChange={handleChange}
 				tabIndex={-1}
