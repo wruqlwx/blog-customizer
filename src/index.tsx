@@ -4,7 +4,10 @@ import clsx from 'clsx';
 
 import { Article } from './components/article/Article';
 import { ArticleParamsForm } from './components/article-params-form/ArticleParamsForm';
-import { defaultArticleState, ArticleStateType } from './constants/articleProps';
+import {
+	defaultArticleState,
+	ArticleStateType,
+} from './constants/articleProps';
 
 import './styles/index.scss';
 import styles from './styles/index.module.scss';
