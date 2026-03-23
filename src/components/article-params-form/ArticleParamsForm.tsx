@@ -54,10 +54,9 @@ export const ArticleParamsForm = ({
 	};
 
 	return (
-		<>
+		<div ref={sidebarRef}>
 			<ArrowButton isOpen={isOpen} onClick={handleArrowClick} />
 			<aside
-				ref={sidebarRef}
 				className={clsx(styles.container, { [styles.container_open]: isOpen })}>
 				<form className={styles.form} onSubmit={handleSubmit}>
 					<Text as='h2' size={31} weight={800} uppercase>
@@ -72,7 +71,7 @@ export const ArticleParamsForm = ({
 						}
 					/>
 					<RadioGroup
-						name='fontSize'
+						name='radio'
 						title='Размер шрифта'
 						selected={formState.fontSizeOption}
 						options={fontSizeOptions}
@@ -116,6 +115,6 @@ export const ArticleParamsForm = ({
 					</div>
 				</form>
 			</aside>
-		</>
+		</div>
 	);
 };
